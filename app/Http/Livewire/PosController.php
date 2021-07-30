@@ -65,7 +65,7 @@ class PosController extends Component
                 return;
             }
 
-            Cart::add($product->id, $product->name,$product->price, $cant, $product->image);
+            Cart::add($product->id, $product->name,1, $cant, $product->image);
             $this->total = Cart::getTotal();
             $this->itemsQuantity = Cart::getTotalQuantity();
 
@@ -95,7 +95,7 @@ class PosController extends Component
                 return;
             }
         }
-        Cart::add($product->id, $product->name, $product->price, $cant, $product->image);
+        Cart::add($product->id, $product->name, 1, $cant, $product->image);
         $this->total = Cart::getTotal();
         $this->itemsQuantity = Cart::getTotalQuantity();
         $this->emit('scan-ok', $title);
@@ -119,7 +119,7 @@ class PosController extends Component
        
         $this->removeItem($productId);
         if ($cant > 0) {
-            Cart::add($product->id, $product->name, $product->price, $cant, $product->image);
+            Cart::add($product->id, $product->name, 1, $cant, $product->image);
             $this->total = Cart::getTotal();
             $this->itemsQuantity = Cart::getTotalQuantity();
             $this->emit('scan-ok', $title);
@@ -138,7 +138,7 @@ class PosController extends Component
         Cart::remove($productId);
         $newQty = ($item->quantity) -1;
         if ($newQty > 0)
-            Cart::add($item->id, $item->name, $item->price, $newQty, $item->attributes[0] );
+            Cart::add($item->id, $item->name, 1, $newQty, $item->attributes[0] );
         
         $this->total= Cart::getTotal();
         $this->itemsQuantity = Cart::getTotalQuantity();
@@ -172,7 +172,6 @@ class PosController extends Component
                 $items = Cart::getContent();
                 foreach ($items as $item) {
                     SaleDetail::create([
-                        'price' => $item->price,
                         'quantity' => $item->quantity,
                         'product_id' => $item->id,
                         'sale_id' => $sale->id

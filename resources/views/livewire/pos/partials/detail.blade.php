@@ -9,9 +9,7 @@
                                 <tr>
                                     <th width="10%"></th>
                                     <th class="table-th text-left text-withe">DESCRIPCION</th>
-                                    <th class="table-th text-center text-withe">PRECIO</th>
                                     <th width="13%" class="table-th text-center text-withe">CANT</th>
-                                    <th class="table-th text-center text-withe">IMPORTE</th>
                                     <th class="table-th text-center text-withe">ACTIONS</th>
                                 </tr>
                             </thead>
@@ -31,7 +29,6 @@
                                             @endif
                                         </td>
                                         <td><h6>{{$item->name}}</h6></td>
-                                        <td class="text-center">Bs{{number_format($item->price,2)}}</td>
                                         <td>
                                             <input 
                                             type="number" 
@@ -40,11 +37,6 @@
                                             style="font-size: 1rem!important"
                                             class="form-control text-center"
                                             value="{{$item->quantity}}">
-                                        </td>
-                                        <td class="text-center">
-                                            <h6>
-                                                Bs{{number_format($item->price * $item->quantity,2)}}
-                                            </h6>
                                         </td>
                                         <td class="text-center">
                                             <button onclick="Confirm('{{$item->id}}', 'removeItem','Confirmas Eliminar el Registro?')" class="btn btn-dark mbmobile">

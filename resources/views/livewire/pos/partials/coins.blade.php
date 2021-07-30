@@ -8,11 +8,8 @@
                         <div class="input-group input-group-md mb-3">
                             <div class="task-header">
                                 <div>
-                                    <h2>TOTAL: Bs{{number_format($total,2)}}</h2>
+                                    <h2>Articulos:{{$itemsQuantity}}</h2>
                                     <input type="hidden" id="hiddenTotal" value="{{$total}}">
-                                </div>
-                                <div>
-                                    <h4 class="mt-3">Articulos: {{$itemsQuantity}}</h4>
                                 </div>
                             </div>                            
                         </div>
